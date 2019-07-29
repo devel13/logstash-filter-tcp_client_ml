@@ -40,7 +40,7 @@ class LogStash::Filters::TcpClientMl < LogStash::Filters::Base
     sock = TCPSocket.new(@tcp_address, @tcp_port.to_i)
 
     sock.write event.get("message")
-    event.set("anomalyFlag", sock.read(5))
+    event.set("anomalyFlag", sock.read(1))
     
     #puts sock.read(5) # Since the response message has 5 bytes.
     sock.close
